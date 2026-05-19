@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wahid's Green Food — Cottbus</title>
+  <meta name="description" content="Wahid's Green Food in Cottbus — Halal, vegan-friendly fast food with pickup ordering.">
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/wahid.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#home" class="logo" aria-label="Wahid's Green Food home">
+        <span class="logo-mark">WG</span>
+        <span>Wahid's Green Food <small>Fast food can be good food too</small></span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#menu" data-i18n="navMenu">Menü</a>
+        <a href="#order" data-i18n="navOrder">Bestellen</a>
+        <a href="#info" data-i18n="navInfo">Info</a>
+      </nav>
+      <div class="lang" aria-label="Language switch">
+        <button type="button" data-lang="de" class="active">DE</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow" data-i18n="heroSub">Halal • Vegan freundlich • Cottbus</div>
+          <h1 data-i18n="heroTitle">Wahid's Green Food</h1>
+          <p data-i18n="heroText">Fast Food kann auch gutes Essen sein. Wähle dein Essen, Abholzeit und besondere Wünsche — Wahid bestätigt manuell.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#order" data-i18n="orderNow">Jetzt bestellen</a>
+            <a class="btn secondary" href="#menu" data-i18n="viewMenu">Menü ansehen</a>
+          </div>
+          <div class="badges">
+            <span class="badge">🥙 Halal</span><span class="badge">🌱 Vegan options</span><span class="badge">📍 Cottbus</span><span class="badge">🥡 Pickup</span>
+          </div>
+        </div>
+        <div class="hero-card">
+          <img src="assets/images/hero-banner.png" alt="Food preview">
+          <p class="notice" data-i18n="payment">Zahlung bei Abholung im Geschäft. Barzahlung oder Kartenzahlung möglich.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="menu">
+      <div class="container">
+        <div class="section-title">
+          <div><h2 data-i18n="menuTitle">Menü</h2><p class="muted" data-i18n="menuText">Erster Prototyp: Preise aktuell laut Flyer. Fotos werden noch ersetzt/verbessert.</p></div>
+        </div>
+        <div class="filters" id="filters"></div>
+        <div class="menu-grid" id="menuGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="order">
+      <div class="container">
+        <div class="section-title"><h2 data-i18n="orderTitle">Abholbestellung</h2></div>
+        <div class="order-layout">
+          <div class="panel">
+            <h3 data-i18n="cart">Warenkorb</h3>
+            <div id="cartItems"></div>
+            <div class="total"><span data-i18n="total">Summe</span><span id="total">0,00 €</span></div>
+            <p class="notice warning" data-i18n="allergy">Bei Allergien oder Unverträglichkeiten bitte direkt im Laden fragen.</p>
+          </div>
+
+          <form class="panel" id="orderForm">
+            <h3 data-i18n="pickup">Abholung</h3>
+            <div class="form-grid">
+              <div class="field"><label for="pickupDate" data-i18n="pickupDate">Datum</label><input id="pickupDate" type="date" required></div>
+              <div class="field"><label for="pickupTime" data-i18n="pickupTime">Uhrzeit</label><input id="pickupTime" type="time" step="900" required></div>
+              <div class="field"><label for="customerName" data-i18n="name">Name optional</label><input id="customerName" autocomplete="name"></div>
+              <div class="field"><label for="phone" data-i18n="phone">Telefon/WhatsApp optional</label><input id="phone" autocomplete="tel"></div>
+              <div class="field full"><label for="email" data-i18n="email">E-Mail optional</label><input id="email" type="email" autocomplete="email"></div>
+              <div class="field full"><label for="comments" data-i18n="comments">Besondere Wünsche</label><textarea id="comments" data-i18n-placeholder="commentsPh" placeholder="z.B. ohne Zwiebeln, extra scharf, Soße separat ..."></textarea></div>
+            </div>
+            <p class="notice" data-i18n="contactHelp">Kontakt ist optional. Ohne Kontakt können wir dich bei Änderungen oder Rückmeldung nicht erreichen.</p>
+            <p class="notice" data-i18n="manual">Testphase: Die Bestellung wird lokal gespeichert. Telegram/WhatsApp wird später verbunden.</p>
+            <div id="error" class="error" role="alert"></div>
+            <button class="btn primary" type="submit" data-i18n="submit">Bestellung erstellen</button>
+            <div class="success" id="success">
+              <p data-i18n="success">Bestellung erstellt</p>
+              <p><span data-i18n="orderNo">Ihre Bestellnummer ist</span> <strong id="orderCode">B-001</strong>.</p>
+              <p data-i18n="sayNo">Bitte nennen Sie diese Nummer bei der Abholung.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="info">
+      <div class="container">
+        <div class="section-title"><h2 data-i18n="infoTitle">Informationen</h2></div>
+        <div class="info-grid">
+          <div class="info-card"><h3 data-i18n="address">Adresse</h3><p>Stadtpromenade 5<br>03046 Cottbus</p></div>
+          <div class="info-card"><h3 data-i18n="hours">Öffnungszeiten</h3><p>Mo–Fr: 10:30–20:00<br>Sa: 12:00–20:00<br>So: geschlossen</p></div>
+          <div class="info-card"><h3 data-i18n="follow">Folgen & Bewertungen</h3><p><a href="https://www.instagram.com/wahids.green_food_/" target="_blank" rel="noopener" data-i18n="instagram">Instagram öffnen</a></p><p><a href="https://www.happycow.net/reviews/wahids-green-food-cottbus-252028" target="_blank" rel="noopener" data-i18n="happycow">HappyCow Bewertungen</a></p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© Wahid's Green Food — Prototype v1</div>
+  </footer>
+
+  <script src="data/menu.js"></script>
+  <script src="assets/js/wahid.js"></script>
+</body>
+</html>

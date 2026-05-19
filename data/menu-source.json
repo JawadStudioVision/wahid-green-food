@@ -1,0 +1,66 @@
+{
+  "business": {
+    "name": "Wahid's Green Food",
+    "address_visible": "Stadtpromenade 5, 03046 Cottbus",
+    "opening_hours_visible": {
+      "monday_friday": "10:30-20:00",
+      "saturday": "12:00-20:00"
+    },
+    "labels_visible": ["Halal", "Vegan options"]
+  },
+  "menu_draft_from_photos": [
+    {"code":"S1","category":"Sandwiches","name":"Falafel","description":"Kichererbsen","price_eur":6.50,"allergens_visible":["A","C"]},
+    {"code":"S2","category":"Sandwiches","name":"Haloumi","description":"Grillkäse","price_eur":6.50,"allergens_visible":["A","C"]},
+    {"code":"S3","category":"Sandwiches","name":"Falafel & Haloumi","description":"Kichererbsen mit Grillkäse","price_eur":7.50,"allergens_visible":["A","C"]},
+    {"code":"S4","category":"Sandwiches","name":"Köfte","description":"Rinderhackfleisch","price_eur":7.00,"allergens_visible":["A","B","D"]},
+    {"code":"S5","category":"Sandwiches","name":"Gemüse","description":"gebratenes Gemüse","price_eur":6.50,"allergens_visible":["A"]},
+    {"code":"S6","category":"Sandwiches","name":"Gemüse & Haloumi","description":"gebratene Gemüse mit Grillkäse","price_eur":7.50,"allergens_visible":["A","C"]},
+    {"code":"S7","category":"Sandwiches","name":"Köfte & Haloumi","description":"Rinderhackfleisch mit Grillkäse","price_eur":7.50,"allergens_visible":["A","B","C"]},
+    {"code":"S8","category":"Sandwiches","name":"Köfte & Gemüse","description":"Rinderhackfleisch mit gebratenem Gemüse","price_eur":7.50,"allergens_visible":["A","B","D"]},
+    {"code":"S9","category":"Sandwiches","name":"Schawarma","description":"Hähnchen vom Grill","price_eur":7.00,"allergens_visible":["A","B"]},
+    {"code":"S10","category":"Sandwiches","name":"Crispy Chicken & Haloumi","description":"","price_eur":7.50,"allergens_visible":["A","B","C"]},
+
+    {"code":"T1","category":"Teller","name":"Falafel Teller","description":"mit Pommes & Salat, Soße nach Wahl","price_eur":10.50,"allergens_visible":["A"]},
+    {"code":"T2","category":"Teller","name":"Haloumi & Falafel","description":"mit Pommes & Salat, Soße nach Wahl","price_eur":11.50,"allergens_visible":["C","D"]},
+    {"code":"T3","category":"Teller","name":"Köfte","description":"Rinderhackfleisch; mit Pommes & Salat, Soße nach Wahl","price_eur":10.50,"allergens_visible":["B","D"]},
+    {"code":"T4","category":"Teller","name":"Gemüse","description":"gebratenes Gemüse; mit Pommes & Salat, Soße nach Wahl","price_eur":10.50,"allergens_visible":["A"]},
+    {"code":"T5","category":"Teller","name":"Crispy Chicken Teller","description":"mit Pommes & Salat, Soße nach Wahl","price_eur":10.50,"allergens_visible":["A","B"]},
+    {"code":"T6","category":"Teller","name":"Köfte Haloumi Teller","description":"mit Pommes & Salat, Soße nach Wahl","price_eur":11.50,"allergens_visible":["B","C","D"]},
+    {"code":"T7","category":"Teller","name":"Köfte Gemüse Teller","description":"mit Pommes & Salat, Soße nach Wahl","price_eur":11.50,"allergens_visible":["B","D"]},
+    {"code":"T8","category":"Teller","name":"Gemüse Haloumi Teller","description":"mit Pommes & Salat, Soße nach Wahl","price_eur":11.50,"allergens_visible":["A","C"]},
+    {"code":"T9","category":"Teller","name":"Haloumi Teller","description":"mit Pommes & Salat, Soße nach Wahl","price_eur":10.50,"allergens_visible":["C"]},
+    {"code":"T10","category":"Teller","name":"Wahid's Teller","description":"Falafel, Haloumi, Crispy Chicken; mit Pommes & Salat, Soße nach Wahl","price_eur":13.50,"allergens_visible":["B","C","D"]},
+
+    {"category":"Burger","name":"Veggie Burger","description":"mit Salat, Tomaten, rote Zwiebeln","price_eur":6.50},
+    {"category":"Burger","name":"Crispy Chicken Burger","description":"mit Salat, Tomaten, rote Zwiebeln","price_eur":7.50},
+    {"category":"Burger","name":"Halloumi Burger","description":"mit Salat, Tomaten, rote Zwiebeln","price_eur":7.00},
+    {"category":"Burger","name":"Cheeseburger","description":"mit Salat, Tomaten, rote Zwiebeln","price_eur":7.50},
+
+    {"category":"Wraps","name":"Avocado Halloumi Wrap","description":"mit Salat, Tomaten, Gurke, rote Zwiebeln","price_eur":9.50},
+    {"category":"Wraps","name":"Gemüse Wrap","description":"mit Salat, Tomaten, Gurke, rote Zwiebeln","price_eur":8.50},
+    {"category":"Wraps","name":"Avocado Falafel Wrap","description":"mit Salat, Tomaten, Gurke, rote Zwiebeln","price_eur":9.50},
+    {"category":"Wraps","name":"Avocado Köfte Wrap","description":"mit Salat, Tomaten, Gurke, rote Zwiebeln","price_eur":9.50},
+    {"category":"Wraps","name":"Falafel Halloumi Wrap","description":"mit Salat, Tomaten, Gurke, rote Zwiebeln","price_eur":9.50},
+    {"category":"Wraps","name":"Crispy Chicken Wrap","description":"mit Salat, Tomaten, Gurke, rote Zwiebeln","price_eur":9.50},
+    {"category":"Wraps","name":"Köfte & Halloumi Wrap","description":"mit Salat, Tomaten, Gurke, rote Zwiebeln","price_eur":9.50},
+    {"category":"Wraps","name":"Schawarma Wrap","description":"mit Salat, Tomaten, Gurke, rote Zwiebeln","price_eur":9.50},
+
+    {"category":"Baguette","name":"Persische Currywurst","price_eur":8.50},
+    {"category":"Baguette","name":"Crispy Chicken Baguette","price_eur":8.50},
+    {"category":"Baguette","name":"Falafel Halloumi Baguette","price_eur":8.50},
+    {"category":"Baguette","name":"Köfte Baguette","price_eur":8.50},
+
+    {"category":"Box","name":"Falafel Box","price_eur":9.50},
+    {"category":"Box","name":"Crispy Chicken Box","price_eur":10.50},
+    {"category":"Side","name":"Salat Bowl","price_eur":6.50},
+    {"category":"Side","name":"Salat Bowl mit Fleisch","price_eur":8.50},
+    {"category":"Side","name":"Salat Bowl mit Käse","price_eur":7.50},
+    {"category":"Side","name":"Süßkartoffel Pommes","price_eur":6.00},
+    {"category":"Side","name":"Pommes","price_eur":4.00}
+  ],
+  "notes": [
+    "Some text/allergen letters are partly blurry; verify before publishing.",
+    "Sauces visible: Kräutersoße, Knoblauchsoße, Hummussoße, Mangosoße, Scharfe Soße. Possibly also Käsesoße.",
+    "Each dish may be available with other sauce for +1 EUR according to flyer text. Verify exact wording."
+  ]
+}
