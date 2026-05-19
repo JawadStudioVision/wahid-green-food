@@ -116,3 +116,6 @@ textarea { min-height: 92px; resize: vertical; }
 .lang button[data-lang="de"], .lang button[data-lang="en"] { color: transparent; position: relative; }
 .lang button[data-lang="de"]::before, .lang button[data-lang="en"]::before { color: var(--green-dark); }
 .lang button.active::before { color: white; }
+
+#chatStatus { display: none; }
+#chat .panel { min-height: 100%; }

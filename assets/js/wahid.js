@@ -7,7 +7,7 @@ const state = {
 
 const t = {
   de: {
-    navMenu: 'Menü', navOrder: 'Bestellen', navInfo: 'Info', heroSub: 'Halal • Vegan freundlich • Cottbus',
+    navMenu: 'Menü', navOrder: 'Bestellen', navInfo: 'Info', navChat: 'Fragen', heroSub: 'Halal • Vegan freundlich • Cottbus',
     heroTitle: "Wahid's Green Food", heroText: 'Fast Food kann auch gutes Essen sein. Wähle dein Essen, Abholzeit und besondere Wünsche — Wahid bestätigt manuell.',
     orderNow: 'Jetzt bestellen', viewMenu: 'Menü ansehen', menuTitle: 'Menü', menuText: 'Erster Prototyp: Preise aktuell laut Flyer. Fotos werden noch ersetzt/verbessert.',
     all: 'Alle', sandwich: 'Sandwiches', plate: 'Teller', burger: 'Burger', wrap: 'Wraps', side: 'Beilagen', add: 'Hinzufügen',
@@ -17,10 +17,11 @@ const t = {
     payment: 'Zahlung bei Abholung im Geschäft. Barzahlung oder Kartenzahlung möglich.', submit: 'Bestellung erstellen', total: 'Summe',
     closed: 'Zu dieser Zeit ist der Laden geschlossen. Bitte wähle eine andere Abholzeit.', needCart: 'Bitte zuerst mindestens ein Gericht auswählen.', success: 'Bestellung erstellt', orderNo: 'Ihre Bestellnummer ist', sayNo: 'Bitte nennen Sie diese Nummer bei der Abholung.',
     infoTitle: 'Informationen', address: 'Adresse', hours: 'Öffnungszeiten', pay: 'Zahlung', follow: 'Folgen & Bewertungen', instagram: 'Instagram öffnen', happycow: 'HappyCow Bewertungen',
-    manual: 'Testphase: Die Bestellung wird lokal gespeichert. Telegram/WhatsApp wird später verbunden.'
+    manual: 'Testphase: Die Bestellung wird lokal gespeichert. Telegram/WhatsApp wird später verbunden.',
+    chatTitle: 'Frage oder Problem melden', chatType: 'Art der Nachricht', chatTypeQuestion: 'Frage', chatTypeProblem: 'Problem / Fehler auf der Website', chatContact: 'Kontakt optional', chatMessage: 'Nachricht', chatPlaceholder: 'Schreiben Sie Ihre Frage oder das Problem hier ...', chatSend: 'An Wahid senden', chatNote: 'Testversion: Nachricht wird lokal gespeichert. Sobald Wahids WhatsApp-Nummer verbunden ist, öffnet sich WhatsApp direkt.', chatHowTitle: 'So funktioniert es', chatHowText: 'Kunden können Fragen stellen oder Website-Probleme melden. Zuerst geht es direkt an Wahid. Später beantwortet der Bot bekannte Fragen automatisch; unbekannte Fragen fragt er Wahid.', chatNeedNumber: 'Noch benötigt: Wahids WhatsApp-Nummer im internationalen Format.', chatSaved: 'Nachricht gespeichert. WhatsApp ist noch nicht verbunden.'
   },
   en: {
-    navMenu: 'Menu', navOrder: 'Order', navInfo: 'Info', heroSub: 'Halal • vegan-friendly • Cottbus',
+    navMenu: 'Menu', navOrder: 'Order', navInfo: 'Info', navChat: 'Fragen', heroSub: 'Halal • vegan-friendly • Cottbus',
     heroTitle: "Wahid's Green Food", heroText: 'Fast food can be good food too. Choose food, pickup time and special wishes — Wahid confirms manually.',
     orderNow: 'Order now', viewMenu: 'View menu', menuTitle: 'Menu', menuText: 'First prototype: prices current from flyer. Photos will be replaced/improved.',
     all: 'All', sandwich: 'Sandwiches', plate: 'Plates', burger: 'Burgers', wrap: 'Wraps', side: 'Sides', add: 'Add',
@@ -30,7 +31,8 @@ const t = {
     payment: 'Payment on pickup in the shop. Cash or card accepted.', submit: 'Create order', total: 'Total',
     closed: 'The shop is closed at this time. Please choose another pickup time.', needCart: 'Please select at least one food item first.', success: 'Order created', orderNo: 'Your order number is', sayNo: 'Please say this number when you pick up your food.',
     infoTitle: 'Information', address: 'Address', hours: 'Opening hours', pay: 'Payment', follow: 'Follow & reviews', instagram: 'Open Instagram', happycow: 'HappyCow reviews',
-    manual: 'Test phase: order is saved locally. Telegram/WhatsApp will be connected later.'
+    manual: 'Test phase: order is saved locally. Telegram/WhatsApp will be connected later.',
+    chatTitle: 'Ask a question or report a problem', chatType: 'Message type', chatTypeQuestion: 'Question', chatTypeProblem: 'Website problem / bug', chatContact: 'Contact optional', chatMessage: 'Message', chatPlaceholder: 'Write your question or the problem here ...', chatSend: 'Send to Wahid', chatNote: 'Test version: message is saved locally. When Wahid’s WhatsApp number is connected, WhatsApp opens directly.', chatHowTitle: 'How it works', chatHowText: 'Customers can ask questions or report website problems. First it goes directly to Wahid. Later the bot answers known questions automatically; unknown questions are sent to Wahid.', chatNeedNumber: 'Still needed: Wahid’s WhatsApp number in international format.', chatSaved: 'Message saved. WhatsApp is not connected yet.'
   }
 };
 
@@ -156,10 +158,42 @@ function createOrder(e) {
   renderCart();
 }
 
+
+const WAHID_WHATSAPP_NUMBER = ''; // later: international format without +, e.g. 4917612345678
+
+function createChatMessage(e) {
+  e.preventDefault();
+  const msg = {
+    created_at: new Date().toISOString(),
+    type: $('#chatType').value,
+    name: $('#chatName').value.trim(),
+    contact: $('#chatContact').value.trim(),
+    message: $('#chatMessage').value.trim(),
+    language: state.lang,
+    page: location.href
+  };
+  const logs = JSON.parse(localStorage.getItem('wgfQuestions') || '[]');
+  logs.push(msg);
+  localStorage.setItem('wgfQuestions', JSON.stringify(logs));
+  const text = `[Wahid Green Food] ${msg.type}
+Name: ${msg.name || '-'}
+Contact: ${msg.contact || '-'}
+Message: ${msg.message}
+Page: ${msg.page}`;
+  if (WAHID_WHATSAPP_NUMBER) {
+    window.open(`https://wa.me/${WAHID_WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+  }
+  const status = $('#chatStatus');
+  status.style.display = 'block';
+  status.textContent = tx('chatSaved');
+  $('#chatForm').reset();
+}
+
 function init() {
   renderFilters(); renderMenu(); renderCart(); setDateDefaults(); translate();
   $$('.lang button').forEach(btn => btn.addEventListener('click', () => { state.lang = btn.dataset.lang; translate(); }));
   $('#orderForm').addEventListener('submit', createOrder);
+  $('#chatForm').addEventListener('submit', createChatMessage);
 }
 
 document.addEventListener('DOMContentLoaded', init);

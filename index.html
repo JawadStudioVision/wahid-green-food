@@ -22,6 +22,7 @@
         <a href="#menu" data-i18n="navMenu">Menü</a>
         <a href="#order" data-i18n="navOrder">Bestellen</a>
         <a href="#info" data-i18n="navInfo">Info</a>
+        <a href="#chat" data-i18n="navChat">Fragen</a>
       </nav>
       <div class="lang" aria-label="Language switch">
         <button type="button" data-lang="de" class="active">DE</button>
@@ -107,6 +108,30 @@
         </div>
       </div>
     </section>
+
+
+    <section class="section" id="chat">
+      <div class="container">
+        <div class="section-title"><h2 data-i18n="chatTitle">Frage oder Problem melden</h2></div>
+        <div class="order-layout">
+          <form class="panel" id="chatForm">
+            <div class="field"><label for="chatType" data-i18n="chatType">Art der Nachricht</label><select id="chatType"><option value="question" data-i18n="chatTypeQuestion">Frage</option><option value="problem" data-i18n="chatTypeProblem">Problem / Fehler auf der Website</option></select></div>
+            <div class="field"><label for="chatName" data-i18n="name">Name optional</label><input id="chatName" autocomplete="name"></div>
+            <div class="field"><label for="chatContact" data-i18n="chatContact">Kontakt optional</label><input id="chatContact" placeholder="Telefon, WhatsApp oder E-Mail"></div>
+            <div class="field"><label for="chatMessage" data-i18n="chatMessage">Nachricht</label><textarea id="chatMessage" required data-i18n-placeholder="chatPlaceholder" placeholder="Schreiben Sie Ihre Frage oder das Problem hier ..."></textarea></div>
+            <button class="btn primary" type="submit" data-i18n="chatSend">An Wahid senden</button>
+            <p class="notice" data-i18n="chatNote">Testversion: Nachricht wird lokal gespeichert. Sobald Wahids WhatsApp-Nummer verbunden ist, öffnet sich WhatsApp direkt.</p>
+            <div id="chatStatus" class="success"></div>
+          </form>
+          <div class="panel">
+            <h3 data-i18n="chatHowTitle">So funktioniert es</h3>
+            <p data-i18n="chatHowText">Kunden können Fragen stellen oder Website-Probleme melden. Zuerst geht es direkt an Wahid. Später beantwortet der Bot bekannte Fragen automatisch; unbekannte Fragen fragt er Wahid.</p>
+            <p class="notice warning" data-i18n="chatNeedNumber">Noch benötigt: Wahids WhatsApp-Nummer im internationalen Format.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="footer">
