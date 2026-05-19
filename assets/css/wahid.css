@@ -121,61 +121,64 @@ textarea { min-height: 92px; resize: vertical; }
 #chat .panel { min-height: 100%; }
 
 
-/* Burger hero animation imported from supplied asset pack */
+/* Clean burger hero animation */
 .hero-burger-card { overflow: hidden; position: relative; }
-.burger-animation {
+.burger-animation.clean-burger {
   position: relative;
   width: 100%;
   min-height: 390px;
   border-radius: 26px;
-  background: radial-gradient(circle at 50% 48%, #fff8d7 0 28%, #e8f7ee 29% 62%, #d3f0df 63% 100%);
+  background:
+    radial-gradient(circle at 50% 45%, rgba(255,255,255,.96) 0 32%, rgba(232,247,238,.95) 33% 68%, rgba(211,240,223,.95) 69% 100%),
+    linear-gradient(135deg, #f7fff9, #e2f5e8);
   display: grid;
   place-items: center;
   isolation: isolate;
 }
-.burger-animation::after {
+.burger-animation.clean-burger::after {
   content: "";
   position: absolute;
-  width: 58%; height: 26px;
-  bottom: 46px; left: 21%;
+  width: 56%; height: 24px;
+  bottom: 54px; left: 22%;
   background: rgba(10, 53, 28, .18);
-  filter: blur(12px);
+  filter: blur(13px);
   border-radius: 50%;
   z-index: 0;
 }
-.burger-layer {
-  position: absolute;
-  width: min(72%, 360px) !important;
+.burger-main {
+  width: min(78%, 390px) !important;
+  max-height: 285px;
   object-fit: contain;
-  filter: drop-shadow(0 18px 18px rgba(13, 63, 34, .16));
-  animation: burgerFloat 4.8s ease-in-out infinite;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 24px 24px rgba(13, 63, 34, .20));
+  animation: burgerGentleFloat 4.6s ease-in-out infinite;
 }
-.layer-back { transform: translateY(64px); z-index: 1; animation-delay: .15s; }
-.layer-mid2 { transform: translateY(22px); z-index: 2; animation-delay: .05s; }
-.layer-mid1 { transform: translateY(-24px); z-index: 3; animation-delay: .1s; }
-.layer-front { transform: translateY(-76px) scale(1.06); z-index: 4; }
-.floating.topping {
+.steam {
   position: absolute;
-  width: 54px !important;
-  height: 54px;
-  object-fit: contain;
-  z-index: 5;
-  filter: drop-shadow(0 10px 10px rgba(13, 63, 34, .15));
-  animation: toppingFloat 5.5s ease-in-out infinite;
+  top: 42px;
+  width: 9px;
+  height: 56px;
+  border-radius: 999px;
+  background: linear-gradient(to top, rgba(22,117,59,0), rgba(22,117,59,.22), rgba(22,117,59,0));
+  filter: blur(.4px);
+  opacity: .65;
+  z-index: 1;
+  animation: steamRise 3.5s ease-in-out infinite;
 }
-.tomato { left: 12%; top: 20%; animation-delay: .1s; }
-.chili { right: 14%; top: 24%; animation-delay: .7s; }
-.garlic { right: 18%; bottom: 22%; animation-delay: 1.2s; }
-@keyframes burgerFloat {
-  0%, 100% { margin-top: 0; }
-  50% { margin-top: -14px; }
+.steam-1 { left: 42%; animation-delay: 0s; }
+.steam-2 { left: 50%; animation-delay: .8s; }
+.steam-3 { left: 58%; animation-delay: 1.5s; }
+@keyframes burgerGentleFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-10px) scale(1.015); }
 }
-@keyframes toppingFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-18px) rotate(8deg); }
+@keyframes steamRise {
+  0% { transform: translateY(28px) scaleY(.65); opacity: 0; }
+  35% { opacity: .55; }
+  100% { transform: translateY(-18px) scaleY(1.05); opacity: 0; }
 }
 @media (max-width: 620px) {
-  .burger-animation { min-height: 310px; }
-  .burger-layer { width: min(82%, 310px) !important; }
-  .floating.topping { width: 42px !important; height: 42px; }
+  .burger-animation.clean-burger { min-height: 300px; }
+  .burger-main { width: min(86%, 320px) !important; max-height: 220px; }
 }
