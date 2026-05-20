@@ -199,3 +199,102 @@ textarea { min-height: 92px; resize: vertical; }
 
 /* Professional simple badges: no emoji fallback boxes */
 .badge { letter-spacing: .01em; }
+
+
+/* Dark premium Wahid hero inspired by approved reference image */
+body { background: #0d120f; }
+.header {
+  background: rgba(7, 11, 8, .82);
+  border-bottom: 1px solid rgba(126, 183, 45, .18);
+  backdrop-filter: blur(16px);
+}
+.header .logo,
+.nav a { color: #eaf5df; }
+.logo small { color: rgba(234,245,223,.72); }
+.lang { background: rgba(255,255,255,.08); border-color: rgba(126,183,45,.25); }
+.lang button[data-lang="de"]::before,
+.lang button[data-lang="en"]::before { color: #eaf5df; }
+.lang button.active { background: #6ea51c; }
+.hero {
+  min-height: 760px;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,.12), rgba(0,0,0,.10) 55%, rgba(0,0,0,.52)),
+    url('../images/wahid-hero-dark.jpg') center center / cover no-repeat;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at center, transparent 0 42%, rgba(0,0,0,.10) 75%, rgba(0,0,0,.25) 100%);
+}
+.hero-grid {
+  min-height: 760px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 34px;
+  position: relative;
+  z-index: 2;
+}
+.hero-grid > div:first-child {
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 14px 18px;
+  border-radius: 24px;
+  background: rgba(5, 9, 7, .34);
+  border: 1px solid rgba(126,183,45,.22);
+  box-shadow: 0 24px 70px rgba(0,0,0,.28);
+  backdrop-filter: blur(5px);
+}
+.hero .eyebrow { color: #97c93d; }
+.hero h1 {
+  font-size: clamp(28px, 3.8vw, 46px);
+  line-height: 1;
+  margin: 4px 0 8px;
+  color: #f4f8ee;
+  text-shadow: 0 8px 22px rgba(0,0,0,.45);
+}
+.hero p { color: rgba(244,248,238,.82); margin: 0 auto; }
+.hero-actions { justify-content: center; margin-top: 14px; }
+.hero-actions .btn.primary { background: #6ea51c; color: #fff; box-shadow: 0 12px 28px rgba(110,165,28,.28); }
+.hero-actions .btn.secondary { background: rgba(255,255,255,.10); color: #f4f8ee; border-color: rgba(255,255,255,.22); }
+.hero .badges { justify-content: center; margin-top: 10px; }
+.hero .badge { background: rgba(126,183,45,.18); color: #eaf5df; border: 1px solid rgba(126,183,45,.24); }
+.hero .hero-card { display: none; }
+.section { background: var(--bg); }
+.footer { background: #071008; }
+@media (max-width: 720px) {
+  .hero { min-height: 640px; background-position: center top; }
+  .hero-grid { min-height: 640px; padding-bottom: 18px; }
+  .hero-grid > div:first-child { padding: 14px; }
+  .hero h1 { font-size: 32px; }
+  .hero p { font-size: 15px; }
+}
+
+
+/* Final dark hero refinement: do not cover the reference-logo artwork with duplicate text */
+.hero-grid > div:first-child {
+  max-width: 360px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: rgba(5, 9, 7, .32);
+  border-color: rgba(126,183,45,.20);
+}
+.hero .eyebrow,
+.hero h1,
+.hero p,
+.hero .badges {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.hero-actions { margin-top: 0; gap: 8px; }
+.hero-actions .btn { padding: 10px 16px; }
