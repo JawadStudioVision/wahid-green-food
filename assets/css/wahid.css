@@ -127,15 +127,52 @@ textarea { min-height: 92px; resize: vertical; }
 
 
 
-/* Real Wahid logo in header */
-.logo-with-image img {
-  width: 56px;
-  height: 56px;
+
+
+/* Professional compact header logo — hard override to prevent full-size image rendering */
+.header {
+  min-height: 74px;
+  max-height: 88px;
+  overflow: hidden;
+}
+.header-inner {
+  min-height: 72px;
+}
+.header .logo.logo-with-image {
+  flex: 0 1 auto;
+  max-width: 320px;
+  min-width: 0;
+}
+.header .logo.logo-with-image > img {
+  inline-size: 46px !important;
+  block-size: 46px !important;
+  width: 46px !important;
+  height: 46px !important;
+  max-width: 46px !important;
+  max-height: 46px !important;
+  flex: 0 0 46px;
   object-fit: contain;
-  border-radius: 14px;
-  background: #fff;
-  border: 1px solid rgba(22,117,59,.14);
-  padding: 4px;
+  display: block;
+  border-radius: 12px;
+  padding: 3px;
+}
+.header .logo.logo-with-image span {
+  display: inline-block;
+  max-width: 210px;
+  line-height: 1.05;
+}
+@media (max-width: 620px) {
+  .header { max-height: none; overflow: visible; }
+  .header .logo.logo-with-image > img {
+    inline-size: 40px !important;
+    block-size: 40px !important;
+    width: 40px !important;
+    height: 40px !important;
+    max-width: 40px !important;
+    max-height: 40px !important;
+    flex-basis: 40px;
+  }
+  .header .logo.logo-with-image span { max-width: 150px; font-size: 13px; }
 }
 
 /* Hero video with visible source watermark */
