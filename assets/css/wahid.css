@@ -141,3 +141,33 @@ textarea { min-height: 92px; resize: vertical; }
 @media (max-width: 620px) {
   .hero-video-wrap { aspect-ratio: 1 / 1; }
 }
+
+
+/* Hero layout fix: place horizontal video under the Wahid intro text */
+.hero-grid {
+  grid-template-columns: 1fr;
+  align-items: start;
+  gap: 28px;
+}
+.hero-grid > div:first-child {
+  max-width: 760px;
+}
+.hero-card {
+  width: min(940px, 100%);
+  margin: 0 auto;
+  padding: 18px;
+}
+.hero-video-wrap {
+  aspect-ratio: 16 / 9;
+  border-radius: 24px;
+  background: #111;
+}
+.hero-food-video {
+  object-fit: contain;
+  background: #111;
+}
+@media (max-width: 620px) {
+  .hero { padding-top: 44px; }
+  .hero-card { padding: 10px; border-radius: 22px; }
+  .hero-video-wrap { aspect-ratio: 16 / 9; border-radius: 18px; }
+}
