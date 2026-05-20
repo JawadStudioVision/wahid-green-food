@@ -76,7 +76,7 @@ h2 { font-size: clamp(30px, 4vw, 48px); margin: 0; color: var(--green-dark); let
 .qty { display: flex; gap: 8px; align-items: center; }
 .qty button { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--border); background: white; cursor: pointer; font-weight: 900; }
 .sauces { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 8px; }
-.sauces label { background: var(--green-light); padding: 8px; border-radius: 12px; font-weight: 800; font-size: 13px; }
+.sauces label { background: var(--green-light); padding: 8px; border-radius: 16px; font-weight: 800; font-size: 13px; }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
 .field.full { grid-column: 1 / -1; }
@@ -131,46 +131,46 @@ textarea { min-height: 92px; resize: vertical; }
 
 /* Professional compact header logo — hard override to prevent full-size image rendering */
 .header {
-  min-height: 74px;
-  max-height: 88px;
+  min-height: 90px;
+  max-height: 108px;
   overflow: hidden;
 }
 .header-inner {
-  min-height: 72px;
+  min-height: 88px;
 }
 .header .logo.logo-with-image {
   flex: 0 1 auto;
-  max-width: 320px;
+  max-width: 380px;
   min-width: 0;
 }
 .header .logo.logo-with-image > img {
-  inline-size: 46px !important;
-  block-size: 46px !important;
-  width: 46px !important;
-  height: 46px !important;
-  max-width: 46px !important;
-  max-height: 46px !important;
-  flex: 0 0 46px;
+  inline-size: 72px !important;
+  block-size: 72px !important;
+  width: 72px !important;
+  height: 72px !important;
+  max-width: 72px !important;
+  max-height: 72px !important;
+  flex: 0 0 72px;
   object-fit: contain;
   display: block;
-  border-radius: 12px;
-  padding: 3px;
+  border-radius: 16px;
+  padding: 2px;
 }
 .header .logo.logo-with-image span {
   display: inline-block;
-  max-width: 210px;
+  max-width: 260px;
   line-height: 1.05;
 }
 @media (max-width: 620px) {
   .header { max-height: none; overflow: visible; }
   .header .logo.logo-with-image > img {
-    inline-size: 40px !important;
-    block-size: 40px !important;
-    width: 40px !important;
-    height: 40px !important;
-    max-width: 40px !important;
-    max-height: 40px !important;
-    flex-basis: 40px;
+    inline-size: 50px !important;
+    block-size: 50px !important;
+    width: 50px !important;
+    height: 50px !important;
+    max-width: 50px !important;
+    max-height: 50px !important;
+    flex-basis: 50px;
   }
   .header .logo.logo-with-image span { max-width: 150px; font-size: 13px; }
 }
@@ -195,3 +195,7 @@ textarea { min-height: 92px; resize: vertical; }
   .logo-with-image img { width: 48px; height: 48px; }
   .hero-video-wrap { aspect-ratio: 16 / 9; border-radius: 18px; }
 }
+
+
+/* Professional simple badges: no emoji fallback boxes */
+.badge { letter-spacing: .01em; }
