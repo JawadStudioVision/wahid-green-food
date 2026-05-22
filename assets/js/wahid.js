@@ -491,9 +491,17 @@ function normalizeWhatsAppNumber(value) {
 
 function openWhatsAppMessage(message) {
   if (!WAHID_WHATSAPP_NUMBER) return false;
-  const url = `https://wa.me/${WAHID_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-  const opened = window.open(url, '_blank', 'noopener');
-  return Boolean(opened);
+  const encodedMessage = encodeURIComponent(message);
+  const appUrl = `whatsapp://send?phone=${WAHID_WHATSAPP_NUMBER}&text=${encodedMessage}`;
+  const webFallbackUrl = `https://wa.me/${WAHID_WHATSAPP_NUMBER}?text=${encodedMessage}`;
+
+  // Prefer the native WhatsApp app for the easiest customer flow. If the browser
+  // cannot hand off to the app, fall back to WhatsApp's normal web handoff page.
+  window.location.href = appUrl;
+  window.setTimeout(() => {
+    if (!document.hidden) window.location.href = webFallbackUrl;
+  }, 1200);
+  return true;
 }
 
 async function copyText(text, fallbackSelector) {
