@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/wahid.css?v=20260520-sandwich-video2">
+  <link rel="stylesheet" href="assets/css/wahid.css?v=20260522-public-v1">
 </head>
 <body>
   <header class="header">
@@ -43,7 +43,7 @@
             <a class="btn secondary" href="#menu" data-i18n="viewMenu">Menü ansehen</a>
           </div>
           <div class="badges">
-            <span class="badge">Halal</span><span class="badge">Vegan options</span><span class="badge">Cottbus</span><span class="badge">Pickup</span>
+            <span class="badge" data-i18n="badgeHalal">Halal</span><span class="badge" data-i18n="badgeVegan">Vegane Optionen</span><span class="badge" data-i18n="badgeCottbus">Cottbus</span><span class="badge" data-i18n="badgePickup">Abholung</span>
           </div>
         </div>
         <div class="hero-card hero-burger-card" aria-label="Animated burger preview">
@@ -98,14 +98,22 @@
               <div class="field full"><label for="email" data-i18n="email">E-Mail optional</label><input id="email" type="email" autocomplete="email"></div>
               <div class="field full"><label for="comments" data-i18n="comments">Besondere Wünsche</label><textarea id="comments" data-i18n-placeholder="commentsPh" placeholder="z.B. ohne Zwiebeln, extra scharf, Soße separat ..."></textarea></div>
             </div>
-            <p class="notice" data-i18n="contactHelp">Kontakt ist optional. Ohne Kontakt können wir dich bei Änderungen oder Rückmeldung nicht erreichen.</p>
-            <p class="notice" data-i18n="manual">Testphase: Die Bestellung wird lokal gespeichert. Telegram/WhatsApp wird später verbunden.</p>
+            <p class="notice" data-i18n="pickupHelp">Abholzeiten werden nach Deutschlandzeit geprüft. Mindestens 20 Minuten Vorlauf.</p>
+            <p class="notice" data-i18n="contactHelp">Kontakt ist optional. Ohne Kontakt kann der Laden dich bei Änderungen oder Rückfragen nicht erreichen.</p>
+            <p class="notice" data-i18n="manual">Statische v1: Die Website speichert keine Bestellung auf einem Server. Bitte WhatsApp senden oder die Nachricht kopieren und den Laden kontaktieren.</p>
             <div id="error" class="error" role="alert"></div>
-            <button class="btn primary" type="submit" data-i18n="submit">Bestellung erstellen</button>
+            <button class="btn primary" type="submit" data-i18n="submit">Bestellung vorbereiten</button>
             <div class="success" id="success">
-              <p data-i18n="success">Bestellung erstellt</p>
-              <p><span data-i18n="orderNo">Ihre Bestellnummer ist</span> <strong id="orderCode">B-001</strong>.</p>
-              <p data-i18n="sayNo">Bitte nennen Sie diese Nummer bei der Abholung.</p>
+              <p data-i18n="success">Bestellung vorbereitet</p>
+              <p><span data-i18n="orderNo">Ihr Abholcode ist</span> <strong id="orderCode">WGF-20260522-180000-A7K9Q</strong>.</p>
+              <p id="orderActionMessage"></p>
+              <p data-i18n="sayNo">Bitte senden Sie die Nachricht an den Laden oder kopieren Sie sie für die direkte Kontaktaufnahme.</p>
+              <div class="message-copy" id="orderCopyBlock" hidden>
+                <label for="orderMessage" data-i18n="orderCopyLabel">Bestellnachricht zum Kopieren</label>
+                <textarea id="orderMessage" readonly></textarea>
+                <button class="btn secondary" type="button" id="copyOrderMessage" data-i18n="copyMessage">Nachricht kopieren</button>
+                <p class="muted copy-status" id="orderCopyStatus"></p>
+              </div>
             </div>
           </form>
         </div>
@@ -117,7 +125,10 @@
         <div class="section-title"><h2 data-i18n="infoTitle">Informationen</h2></div>
         <div class="info-grid">
           <div class="info-card"><h3 data-i18n="address">Adresse</h3><p>Stadtpromenade 5<br>03046 Cottbus</p></div>
-          <div class="info-card"><h3 data-i18n="hours">Öffnungszeiten</h3><p>Mo–Fr: 10:30–20:00<br>Sa: 12:00–20:00<br>So: geschlossen</p></div>
+          <div class="info-card"><h3 data-i18n="hours">Öffnungszeiten</h3><p class="hours-lines" data-i18n="hoursText">Mo-Fr: 10:30-20:00
+Sa: 12:00-20:00
+So: geschlossen
+Online-Abholzeiten bis 19:45</p></div>
           <div class="info-card"><h3 data-i18n="follow">Folgen & Bewertungen</h3><p><a href="https://www.instagram.com/wahids.green_food_/" target="_blank" rel="noopener" data-i18n="instagram">Instagram öffnen</a></p><p><a href="https://www.happycow.net/reviews/wahids-green-food-cottbus-252028" target="_blank" rel="noopener" data-i18n="happycow">HappyCow Bewertungen</a></p></div>
         </div>
       </div>
@@ -133,14 +144,20 @@
             <div class="field"><label for="chatName" data-i18n="name">Name optional</label><input id="chatName" autocomplete="name"></div>
             <div class="field"><label for="chatContact" data-i18n="chatContact">Kontakt optional</label><input id="chatContact" placeholder="Telefon, WhatsApp oder E-Mail"></div>
             <div class="field"><label for="chatMessage" data-i18n="chatMessage">Nachricht</label><textarea id="chatMessage" required data-i18n-placeholder="chatPlaceholder" placeholder="Schreiben Sie Ihre Frage oder das Problem hier ..."></textarea></div>
-            <button class="btn primary" type="submit" data-i18n="chatSend">An Wahid senden</button>
-            <p class="notice" data-i18n="chatNote">Testversion: Nachricht wird lokal gespeichert. Sobald Wahids WhatsApp-Nummer verbunden ist, öffnet sich WhatsApp direkt.</p>
+            <button class="btn primary" type="submit" data-i18n="chatSend">Nachricht vorbereiten</button>
+            <p class="notice" data-i18n="chatNote">Statische v1: Die Website sendet nichts an einen Server. Mit WhatsApp-Konfiguration öffnet sich eine vorbereitete Nachricht.</p>
             <div id="chatStatus" class="success"></div>
+            <div class="message-copy" id="chatMessageCopy" hidden>
+              <label for="chatPreparedMessage" data-i18n="chatCopyLabel">Nachricht zum Kopieren</label>
+              <textarea id="chatPreparedMessage" readonly></textarea>
+              <button class="btn secondary" type="button" id="copyChatMessage" data-i18n="copyMessage">Nachricht kopieren</button>
+              <p class="muted copy-status" id="chatCopyStatus"></p>
+            </div>
           </form>
           <div class="panel">
             <h3 data-i18n="chatHowTitle">So funktioniert es</h3>
-            <p data-i18n="chatHowText">Kunden können Fragen stellen oder Website-Probleme melden. Zuerst geht es direkt an Wahid. Später beantwortet der Bot bekannte Fragen automatisch; unbekannte Fragen fragt er Wahid.</p>
-            <p class="notice warning" data-i18n="chatNeedNumber">Noch benötigt: Wahids WhatsApp-Nummer im internationalen Format.</p>
+            <p data-i18n="chatHowText">Kunden können Fragen stellen oder Website-Probleme melden. Die Website bereitet dafür eine Nachricht vor, die direkt an den Laden gesendet oder kopiert werden muss.</p>
+            <p class="notice warning" data-i18n="chatNeedNumber">Ohne konfigurierte WhatsApp-Nummer muss die Nachricht kopiert und direkt an den Laden gesendet werden.</p>
           </div>
         </div>
       </div>
@@ -149,10 +166,13 @@
   </main>
 
   <footer class="footer">
-    <div class="container">© Wahid's Green Food — Prototype v1</div>
+    <div class="container">© Wahid's Green Food — Static v1</div>
   </footer>
 
+  <script>
+    window.WAHID_WHATSAPP_NUMBER = '';
+  </script>
   <script src="data/menu.js"></script>
-  <script src="assets/js/wahid.js"></script>
+  <script src="assets/js/wahid.js?v=20260522-public-v1"></script>
 </body>
 </html>

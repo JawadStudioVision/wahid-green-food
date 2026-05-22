@@ -88,9 +88,21 @@ textarea { min-height: 92px; resize: vertical; }
 .warning { background: #fff4e5; border-color: #ffd599; color: #6b3d00; }
 .error { color: var(--danger); font-weight: 900; min-height: 22px; }
 .success { display: none; background: #ecfdf3; border: 1px solid #abefc6; border-radius: 20px; padding: 18px; margin-top: 16px; }
-.success strong { font-size: 32px; color: var(--green); }
+.success strong { font-size: clamp(18px, 4vw, 28px); color: var(--green); overflow-wrap: anywhere; }
 .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .info-card { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; }
+.hours-lines { white-space: pre-line; }
+.message-copy { display: grid; gap: 8px; margin-top: 12px; }
+.message-copy[hidden] { display: none !important; }
+.message-copy textarea {
+  min-height: 220px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.message-copy .btn { justify-self: start; }
+.copy-status { margin: 0; font-size: 13px; }
 .footer { background: var(--green-dark); color: white; padding: 34px 0; }
 .footer a { color: #bff4ce; }
 @media (max-width: 900px) {

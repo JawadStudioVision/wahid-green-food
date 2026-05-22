@@ -34,7 +34,7 @@ This file contains confirmed information about **Wahid's Green Food** only: the 
   - If no contact is provided, Wahid cannot contact the customer if something changes
 - **Pickup time:** Customer chooses pickup date and time
 - **Opening-hours rule:** The website should block pickup times when the shop is closed
-- **Order number:** Short format like `B-001`, `B-002`, `B-003`
+- **Order code:** Public static v1 uses a safer customer pickup code with Germany date/time and a random suffix, for example `WGF-20260522-180000-A7K9Q`
 - **Special wishes:** Free-text comment field, for example: without onion, extra spicy, sauce separate
 
 ## Allergy and allergen notice
@@ -53,7 +53,7 @@ Checkout notice:
 
 ## Sauces
 
-Customers can choose multiple sauces. There are no strict sauce rules in v1. If something is unclear, Wahid can clarify with the customer in the shop or through contact details if provided.
+Customers can choose multiple sauces. **Keine Soße / No sauce** cannot be combined with other sauces.
 
 - **Currysoße** / Curry sauce
 - **Mangosoße** / Mango sauce
@@ -180,8 +180,10 @@ Wahid's Green Food should be presented as:
 7. Customer chooses pickup date and pickup time.
 8. Customer may enter optional contact details.
 9. Customer may write special wishes.
-10. Website creates a short order number such as `B-001`.
-11. Customer says the order number in the shop at pickup.
+10. Website creates a safer pickup code such as `WGF-20260522-180000-A7K9Q`.
+11. Website prepares a full order message for WhatsApp or manual copy.
+12. Customer sends the message to the shop or contacts the shop directly.
+13. Browser local storage is only a customer copy; it is not server or shop storage.
 
 ## Information still needed later
 
