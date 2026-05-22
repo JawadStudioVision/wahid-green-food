@@ -37,7 +37,7 @@
         <div>
           <div class="eyebrow" data-i18n="heroSub">Halal • Vegan freundlich • Cottbus</div>
           <h1 data-i18n="heroTitle">Wahid's Green Food</h1>
-          <p data-i18n="heroText">Fast Food kann auch gutes Essen sein. Wähle dein Essen, Abholzeit und besondere Wünsche — Wahid bestätigt manuell.</p>
+          <p data-i18n="heroText">Fast Food kann auch gutes Essen sein. Wähle dein Essen, Abholzeit und besondere Wünsche — Wahid erhält eine direkte Benachrichtigung.</p>
           <div class="hero-actions">
             <a class="btn primary" href="#order" data-i18n="orderNow">Jetzt bestellen</a>
             <a class="btn secondary" href="#menu" data-i18n="viewMenu">Menü ansehen</a>
@@ -100,14 +100,14 @@
             </div>
             <p class="notice" data-i18n="pickupHelp">Abholzeiten werden nach Deutschlandzeit geprüft. Mindestens 20 Minuten Vorlauf.</p>
             <p class="notice" data-i18n="contactHelp">Kontakt ist optional. Ohne Kontakt kann der Laden dich bei Änderungen oder Rückfragen nicht erreichen.</p>
-            <p class="notice" data-i18n="manual">Statische v1: Die Website speichert keine Bestellung auf einem Server. Bitte WhatsApp senden oder die Nachricht kopieren und den Laden kontaktieren.</p>
+            <p class="notice" data-i18n="manual">Die Bestellung wird an den Laden gesendet. Zahlung erfolgt bei Abholung.</p>
             <div id="error" class="error" role="alert"></div>
-            <button class="btn primary" type="submit" data-i18n="submit">Bestellung vorbereiten</button>
+            <button class="btn primary" type="submit" data-i18n="submit">Bestellung senden</button>
             <div class="success" id="success">
-              <p data-i18n="success">Bestellung vorbereitet</p>
+              <p data-i18n="success">Bestellung gesendet</p>
               <p><span data-i18n="orderNo">Ihr Abholcode ist</span> <strong id="orderCode">WGF-20260522-180000-A7K9Q</strong>.</p>
               <p id="orderActionMessage"></p>
-              <p data-i18n="sayNo">Bitte senden Sie die Nachricht an den Laden oder kopieren Sie sie für die direkte Kontaktaufnahme.</p>
+              <p data-i18n="sayNo">Bitte behalten Sie den Abholcode. Der Laden bestätigt manuell bei Bedarf.</p>
               <div class="message-copy" id="orderCopyBlock" hidden>
                 <label for="orderMessage" data-i18n="orderCopyLabel">Bestellnachricht zum Kopieren</label>
                 <textarea id="orderMessage" readonly></textarea>
@@ -171,8 +171,9 @@ Online-Abholzeiten bis 19:45</p></div>
 
   <script>
     window.WAHID_WHATSAPP_NUMBER = '491778900625';
+    window.WAHID_ORDER_ENDPOINT = '';
   </script>
   <script src="data/menu.js"></script>
-  <script src="assets/js/wahid.js?v=20260522-whatsapp-app-first"></script>
+  <script src="assets/js/wahid.js?v=20260522-order-backend-ready"></script>
 </body>
 </html>

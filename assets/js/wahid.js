@@ -53,7 +53,7 @@ const t = {
     navMenu: 'Menü', navOrder: 'Bestellen', navInfo: 'Info', navChat: 'Fragen',
     heroSub: 'Halal • Vegan freundlich • Cottbus',
     heroTitle: "Wahid's Green Food",
-    heroText: 'Wähle dein Essen, eine Abholzeit und sende die vorbereitete Nachricht direkt an den Laden.',
+    heroText: 'Wähle dein Essen und eine Abholzeit. Der Laden erhält die Bestellung direkt als Benachrichtigung.',
     orderNow: 'Jetzt bestellen', viewMenu: 'Menü ansehen',
     menuTitle: 'Menü',
     menuText: 'Preise laut Flyer-Stand. Keine Online-Zahlung; Abholung und Zahlung im Laden.',
@@ -68,7 +68,7 @@ const t = {
     allergyShort: 'Allergene: bitte im Laden nachfragen.',
     allergy: 'Bei Allergien oder Unverträglichkeiten bitte direkt im Laden nachfragen. Trotz sorgfältiger Zubereitung können Spuren anderer Allergene enthalten sein.',
     payment: 'Zahlung bei Abholung im Geschäft. Barzahlung oder Kartenzahlung möglich.',
-    submit: 'Bestellung vorbereiten', total: 'Summe',
+    submit: 'Bestellung senden', total: 'Summe',
     closed: 'Zu dieser Zeit ist keine Abholung möglich.',
     needCart: 'Bitte zuerst mindestens ein Gericht auswählen.',
     pickupInvalid: 'Bitte ein gültiges Datum und eine gültige Uhrzeit wählen.',
@@ -76,9 +76,11 @@ const t = {
     pickupLead: 'Bitte mindestens 20 Minuten Vorlaufzeit einplanen.',
     pickupSunday: 'Sonntag ist geschlossen. Bitte einen anderen Tag wählen.',
     pickupHours: 'Bitte Mo-Fr 10:30-19:45 oder Sa 12:00-19:45 wählen.',
-    success: 'Bestellung vorbereitet',
+    success: 'Bestellung gesendet',
     orderNo: 'Ihr Abholcode ist',
-    sayNo: 'Bitte senden Sie die Nachricht an den Laden oder kopieren Sie sie für die direkte Kontaktaufnahme.',
+    sayNo: 'Bitte behalten Sie den Abholcode. Der Laden bestätigt manuell bei Bedarf.',
+    orderSent: 'Danke! Die Bestellung wurde an den Laden gesendet und in der Bestellliste gespeichert.',
+    orderSendFailed: 'Die automatische Übermittlung ist fehlgeschlagen. Bitte im Laden anrufen oder die Nachricht kopieren.',
     orderWhatsAppOpened: 'WhatsApp wurde mit der Bestellung geöffnet. Bitte dort auf Senden tippen; diese Website sendet nicht automatisch.',
     orderManualContact: 'WhatsApp ist noch nicht verbunden. Bitte die Bestellnachricht kopieren und den Laden direkt kontaktieren.',
     orderPopupBlocked: 'WhatsApp konnte nicht geöffnet werden. Bitte die Bestellnachricht kopieren und den Laden direkt kontaktieren.',
@@ -90,7 +92,7 @@ const t = {
     infoTitle: 'Informationen', address: 'Adresse', hours: 'Öffnungszeiten',
     hoursText: 'Mo-Fr: 10:30-20:00\nSa: 12:00-20:00\nSo: geschlossen\nOnline-Abholzeiten bis 19:45',
     pay: 'Zahlung', follow: 'Folgen & Bewertungen', instagram: 'Instagram öffnen', happycow: 'HappyCow Bewertungen',
-    manual: 'Statische v1: Die Website speichert keine Bestellung auf einem Server. Bitte WhatsApp senden oder die Nachricht kopieren und den Laden kontaktieren.',
+    manual: 'Die Bestellung wird an den Laden gesendet. Zahlung erfolgt bei Abholung.',
     chatTitle: 'Frage oder Problem melden',
     chatType: 'Art der Nachricht', chatTypeQuestion: 'Frage', chatTypeProblem: 'Problem / Fehler auf der Website',
     chatContact: 'Kontakt optional', chatMessage: 'Nachricht',
@@ -111,7 +113,7 @@ const t = {
     navMenu: 'Menu', navOrder: 'Order', navInfo: 'Info', navChat: 'Questions',
     heroSub: 'Halal • vegan-friendly • Cottbus',
     heroTitle: "Wahid's Green Food",
-    heroText: 'Choose your food and pickup time, then send the prepared message directly to the shop.',
+    heroText: 'Choose your food and pickup time. The shop receives the order directly as a notification.',
     orderNow: 'Order now', viewMenu: 'View menu',
     menuTitle: 'Menu',
     menuText: 'Prices follow the current flyer. No online payment; pickup and payment happen in the shop.',
@@ -126,7 +128,7 @@ const t = {
     allergyShort: 'Allergens: please ask in the shop.',
     allergy: 'If you have allergies or intolerances, please ask directly in the shop. Despite careful preparation, traces of other allergens may be present.',
     payment: 'Payment on pickup in the shop. Cash or card accepted.',
-    submit: 'Prepare order', total: 'Total',
+    submit: 'Send order', total: 'Total',
     closed: 'Pickup is not available at this time.',
     needCart: 'Please select at least one food item first.',
     pickupInvalid: 'Please choose a valid date and time.',
@@ -134,9 +136,11 @@ const t = {
     pickupLead: 'Please allow at least 20 minutes lead time.',
     pickupSunday: 'Sunday is closed. Please choose another day.',
     pickupHours: 'Please choose Mon-Fri 10:30-19:45 or Sat 12:00-19:45.',
-    success: 'Order prepared',
+    success: 'Order sent',
     orderNo: 'Your pickup code is',
-    sayNo: 'Please send the message to the shop or copy it to contact the shop directly.',
+    sayNo: 'Please keep your pickup code. The shop will confirm manually if needed.',
+    orderSent: 'Thank you! The order was sent to the shop and saved in the order list.',
+    orderSendFailed: 'Automatic sending failed. Please call the shop or copy the message.',
     orderWhatsAppOpened: 'WhatsApp opened with the order. Please tap Send there; this website does not send automatically.',
     orderManualContact: 'WhatsApp is not connected yet. Please copy the order message and contact the shop directly.',
     orderPopupBlocked: 'WhatsApp could not be opened. Please copy the order message and contact the shop directly.',
@@ -148,7 +152,7 @@ const t = {
     infoTitle: 'Information', address: 'Address', hours: 'Opening hours',
     hoursText: 'Mon-Fri: 10:30-20:00\nSat: 12:00-20:00\nSun: closed\nOnline pickup slots until 19:45',
     pay: 'Payment', follow: 'Follow & reviews', instagram: 'Open Instagram', happycow: 'HappyCow reviews',
-    manual: 'Static v1: this website does not store orders on a server. Please send WhatsApp or copy the message and contact the shop.',
+    manual: 'The order is sent to the shop. Payment happens at pickup.',
     chatTitle: 'Ask a question or report a problem',
     chatType: 'Message type', chatTypeQuestion: 'Question', chatTypeProblem: 'Website problem / bug',
     chatContact: 'Contact optional', chatMessage: 'Message',
@@ -174,6 +178,9 @@ const tx = (key) => t[state.lang][key] || t.de[key] || key;
 const WAHID_WHATSAPP_NUMBER = normalizeWhatsAppNumber(
   window.WAHID_WHATSAPP_NUMBER || (window.WAHID_CONFIG && window.WAHID_CONFIG.whatsappNumber) || ''
 );
+const WAHID_ORDER_ENDPOINT = String(
+  window.WAHID_ORDER_ENDPOINT || (window.WAHID_CONFIG && window.WAHID_CONFIG.orderEndpoint) || ''
+).trim();
 
 function translate() {
   $$('[data-i18n]').forEach(el => el.textContent = tx(el.dataset.i18n));
@@ -595,12 +602,24 @@ function buildOrderMessage(order) {
   return lines.join('\n');
 }
 
-function setOrderResult(message, statusKey) {
+async function sendOrderToBackend(order) {
+  if (!WAHID_ORDER_ENDPOINT) return false;
+  await fetch(WAHID_ORDER_ENDPOINT, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(order),
+    keepalive: true,
+  });
+  return true;
+}
+
+function setOrderResult(message, statusKey, showCopyBlock = false) {
   $('#orderActionMessage').textContent = tx(statusKey);
   $('#orderMessage').value = message;
   $('#orderCopyStatus').textContent = tx('localCopyOnly');
   $('#success').style.display = 'block';
-  $('#orderCopyBlock').hidden = false;
+  $('#orderCopyBlock').hidden = !showCopyBlock;
 }
 
 async function createOrder(e) {
@@ -648,9 +667,25 @@ async function createOrder(e) {
   pushLocalCopy(STORAGE_KEYS.orderCopies, { code, message, created_at: order.created_at });
 
   $('#orderCode').textContent = code;
+
+  if (WAHID_ORDER_ENDPOINT) {
+    try {
+      await sendOrderToBackend(order);
+      setOrderResult(message, 'orderSent', false);
+      state.cart = [];
+      renderCart();
+      return;
+    } catch (error) {
+      setOrderResult(message, 'orderSendFailed', true);
+      const copied = await copyText(message, '#orderMessage');
+      $('#orderCopyStatus').textContent = copied ? `${tx('copied')} ${tx('localCopyOnly')}` : `${tx('copyFallback')} ${tx('localCopyOnly')}`;
+      return;
+    }
+  }
+
   const opened = openWhatsAppMessage(message);
   const statusKey = WAHID_WHATSAPP_NUMBER ? (opened ? 'orderWhatsAppOpened' : 'orderPopupBlocked') : 'orderManualContact';
-  setOrderResult(message, statusKey);
+  setOrderResult(message, statusKey, true);
 
   if (!WAHID_WHATSAPP_NUMBER || !opened) {
     const copied = await copyText(message, '#orderMessage');
