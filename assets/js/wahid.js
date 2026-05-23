@@ -546,9 +546,7 @@ function randomSuffix(length = 5) {
 }
 
 function nextOrderCode() {
-  const now = getBerlinParts();
-  const stamp = `${String(now.year).padStart(4, '0')}${String(now.month).padStart(2, '0')}${String(now.day).padStart(2, '0')}-${String(now.hour).padStart(2, '0')}${String(now.minute).padStart(2, '0')}${String(now.second).padStart(2, '0')}`;
-  return `WGF-${stamp}-${randomSuffix()}`;
+  return randomSuffix(4);
 }
 
 function selectedSauceLabels(sauces) {
