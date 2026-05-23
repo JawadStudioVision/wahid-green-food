@@ -29,9 +29,9 @@ Create a Google Sheet named for example `Wahid Green Food Orders`.
 1. In the Google Sheet: Extensions → Apps Script.
 2. Paste `Code.gs` into the script editor.
 3. Project Settings → Script properties:
-   - `TELEGRAM_BOT_TOKEN` = bot token from BotFather
-   - `TELEGRAM_CHAT_ID` = Wahid chat/group ID
-   - `SHEET_ID` = the Google Sheet ID from the URL
+   - `WGF_TELEGRAM_BOT_TOKEN` = bot token from BotFather
+   - `WGF_TELEGRAM_CHAT_ID` = Wahid chat/group ID
+   - `WGF_SHEET_ID` = the Google Sheet ID from the URL
 4. Deploy → New deployment → Web app.
 5. Execute as: **Me**.
 6. Who has access: **Anyone**.

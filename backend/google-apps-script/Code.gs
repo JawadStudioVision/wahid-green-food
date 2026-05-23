@@ -5,12 +5,14 @@
  * Website POSTs order JSON -> this script saves it to Google Sheet -> sends Telegram notification to Wahid.
  *
  * Setup in Apps Script Project Settings > Script properties:
- * - TELEGRAM_BOT_TOKEN: bot token from @BotFather
- * - TELEGRAM_CHAT_ID: Wahid's Telegram chat ID or group chat ID
- * - SHEET_ID: optional; if empty, uses the active spreadsheet
+ * - WGF_TELEGRAM_BOT_TOKEN: bot token from @BotFather
+ * - WGF_TELEGRAM_CHAT_ID: Wahid's Telegram chat ID or group chat ID
+ * - WGF_SHEET_ID: optional; if empty, uses the active spreadsheet
  */
 
 const ORDER_SHEET_NAME = 'Orders';
+const DEFAULT_SHEET_ID = '1LUeXEx5uf98h2slnsqz12UhpD8VKc2gm3yG-dBFI95k';
+const DEFAULT_TELEGRAM_CHAT_ID = '317181438';
 const REQUIRED_HEADERS = [
   'Received At',
   'Order Code',
@@ -78,7 +80,7 @@ function appendOrder_(order) {
 
 function getOrdersSheet_() {
   const props = PropertiesService.getScriptProperties();
-  const sheetId = props.getProperty('SHEET_ID');
+  const sheetId = props.getProperty('WGF_SHEET_ID') || props.getProperty('SHEET_ID') || DEFAULT_SHEET_ID;
   const spreadsheet = sheetId ? SpreadsheetApp.openById(sheetId) : SpreadsheetApp.getActiveSpreadsheet();
   if (!spreadsheet) throw new Error('No spreadsheet available. Set SHEET_ID script property.');
 
@@ -128,9 +130,9 @@ function formatTelegramMessage_(order) {
 
 function sendTelegram_(text) {
   const props = PropertiesService.getScriptProperties();
-  const token = props.getProperty('TELEGRAM_BOT_TOKEN');
-  const chatId = props.getProperty('TELEGRAM_CHAT_ID');
-  if (!token || !chatId) throw new Error('Missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID script property');
+  const token = props.getProperty('WGF_TELEGRAM_BOT_TOKEN') || props.getProperty('TELEGRAM_BOT_TOKEN');
+  const chatId = props.getProperty('WGF_TELEGRAM_CHAT_ID') || props.getProperty('TELEGRAM_CHAT_ID') || DEFAULT_TELEGRAM_CHAT_ID;
+  if (!token || !chatId) throw new Error('Missing WGF_TELEGRAM_BOT_TOKEN or WGF_TELEGRAM_CHAT_ID script property');
 
   const response = UrlFetchApp.fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
     method: 'post',
