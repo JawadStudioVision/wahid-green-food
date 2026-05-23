@@ -46,11 +46,25 @@ function doGet() {
 }
 
 function parseOrder_(e) {
-  const raw = e && e.postData && e.postData.contents ? e.postData.contents : '{}';
+  const raw = rawOrderPayload_(e);
   const parsed = JSON.parse(raw);
   parsed._raw = raw;
   parsed.received_at = new Date().toISOString();
   return parsed;
+}
+
+function rawOrderPayload_(e) {
+  if (e && e.parameter && e.parameter.payload) {
+    return e.parameter.payload;
+  }
+
+  const raw = e && e.postData && e.postData.contents ? e.postData.contents : '{}';
+  if (raw.trim().charAt(0) === '{') return raw;
+
+  const match = raw.match(/(?:^|&)payload=([^&]*)/);
+  if (match) return decodeURIComponent(match[1].replace(/\+/g, ' '));
+
+  return raw;
 }
 
 function validateOrder_(order) {
@@ -98,7 +112,8 @@ function getOrdersSheet_() {
 
 function formatItems_(items) {
   return (items || []).map((item) => {
-    const sauces = item.sauce_labels && item.sauce_labels.length ? ` (${item.sauce_labels.join(', ')})` : '';
+    const labels = Array.isArray(item.sauce_labels) ? item.sauce_labels.join(', ') : String(item.sauce_labels || '');
+    const sauces = labels && labels !== '-' ? ` (${labels})` : '';
     return `${item.qty}x ${item.code} ${item.name}${sauces}`;
   }).join('\n');
 }

@@ -79,7 +79,7 @@ const t = {
     success: 'Bestellung gesendet',
     orderNo: 'Ihr Abholcode ist',
     sayNo: 'Bitte behalten Sie den Abholcode. Der Laden bestätigt manuell bei Bedarf.',
-    orderSent: 'Danke! Die Bestellung wurde an den Laden gesendet und in der Bestellliste gespeichert.',
+    orderSent: 'Danke! Die Bestellung wurde an den Laden gesendet. Bitte behalten Sie Ihren Abholcode.',
     orderSendFailed: 'Die automatische Übermittlung ist fehlgeschlagen. Bitte im Laden anrufen oder die Nachricht kopieren.',
     orderWhatsAppOpened: 'WhatsApp wurde mit der Bestellung geöffnet. Bitte dort auf Senden tippen; diese Website sendet nicht automatisch.',
     orderManualContact: 'WhatsApp ist noch nicht verbunden. Bitte die Bestellnachricht kopieren und den Laden direkt kontaktieren.',
@@ -139,7 +139,7 @@ const t = {
     success: 'Order sent',
     orderNo: 'Your pickup code is',
     sayNo: 'Please keep your pickup code. The shop will confirm manually if needed.',
-    orderSent: 'Thank you! The order was sent to the shop and saved in the order list.',
+    orderSent: 'Thank you! The order was sent to the shop. Please keep your pickup code.',
     orderSendFailed: 'Automatic sending failed. Please call the shop or copy the message.',
     orderWhatsAppOpened: 'WhatsApp opened with the order. Please tap Send there; this website does not send automatically.',
     orderManualContact: 'WhatsApp is not connected yet. Please copy the order message and contact the shop directly.',
@@ -604,13 +604,33 @@ function buildOrderMessage(order) {
 
 async function sendOrderToBackend(order) {
   if (!WAHID_ORDER_ENDPOINT) return false;
-  await fetch(WAHID_ORDER_ENDPOINT, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-    body: JSON.stringify(order),
-    keepalive: true,
-  });
+
+  const frameName = `wgf-order-frame-${Date.now()}-${randomSuffix(3)}`;
+  const iframe = document.createElement('iframe');
+  iframe.name = frameName;
+  iframe.hidden = true;
+  iframe.style.display = 'none';
+
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = WAHID_ORDER_ENDPOINT;
+  form.target = frameName;
+  form.enctype = 'application/x-www-form-urlencoded';
+  form.hidden = true;
+
+  const payload = document.createElement('input');
+  payload.type = 'hidden';
+  payload.name = 'payload';
+  payload.value = JSON.stringify(order);
+  form.appendChild(payload);
+
+  document.body.appendChild(iframe);
+  document.body.appendChild(form);
+  form.submit();
+  window.setTimeout(() => {
+    form.remove();
+    iframe.remove();
+  }, 10000);
   return true;
 }
 
@@ -670,10 +690,10 @@ async function createOrder(e) {
 
   if (WAHID_ORDER_ENDPOINT) {
     try {
-      await sendOrderToBackend(order);
       setOrderResult(message, 'orderSent', false);
       state.cart = [];
       renderCart();
+      await sendOrderToBackend(order);
       return;
     } catch (error) {
       setOrderResult(message, 'orderSendFailed', true);
